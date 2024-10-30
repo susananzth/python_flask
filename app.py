@@ -69,5 +69,42 @@ def expresiones():
 def condicionales():
     return render_template("condicionales.html", equipo="Barcelona")
 
+@app.route('/bucles')
+def bucles():
+    dependencias = [
+        "Archipiélago Los Monjes",
+        "Isla la Tortuga y Cayos adyacentes",
+        "Isla La Sola",
+        "Islas Los Testigos",
+        "Islas los Frailes",
+        "Isla de Patos",
+        "Archipiélago Los Roques",
+        "Isla La Blanquilla",
+        "Islas Los Hermanos",
+        "Isla La Orchila",
+        "Archipiélago Las Aves",
+        "Isla de Aves"
+    ]
+    
+    superficies = {
+        "Archipiélago Los Monjes": 0.20,
+        "Isla la Tortuga y Cayos adyacentes": 156.6,
+        "Isla La Sola": 0.0005,
+        "Islas Los Testigos": 6.53,
+        "Islas los Frailes": 1.92,
+        "Isla de Patos": 0.60,
+        "Archipiélago Los Roques": 40.61,
+        "Isla La Blanquilla": 64.53,
+        "Islas Los Hermanos": 2.14,
+        "Isla La Orchila": 40,
+        "Archipiélago Las Aves": 3.35,
+        "Isla de Aves": 0.045
+    }
+    return render_template(
+        "bucles.html", 
+        islas = dependencias, 
+        superficies = superficies
+    )
+
 if __name__ == '__main__':
     app.run(debug=True)

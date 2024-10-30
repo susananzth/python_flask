@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python | Bucles</title>
+</head>
+<body>
+    <h1>Bucles</h1>
+    <h2>Dependencias federales de Venezuela</h2>
+    <ul>
+        {% for isla in islas %}
+            <li>
+                {{ isla }}
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Superficies de las Dependencias federales de Venezuela</h2>
+    <ul>
+        {% for isla, sup in superficies.items() %}
+            <li>
+                {{ isla }} tiene {{ sup }}km2
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
