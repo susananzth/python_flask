@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python | Formulario 2</title>
+</head>
+<body>
+    <h1>Formulario 2</h1>
+    <h2>Ejemplo de entrada de datos con Flask</h2>
+
+    <form class="form" method="post">
+        <label for="nombre" class="form-label"> Nombre:</label>
+        <input id="nombre" type="text" name="nombre">
+        <button type="submit" class="form-submit">Enviar</button>
+    </form>
+
+    <h2>Usuarios:</h2>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>{{ usuario }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -27,6 +27,7 @@ source venv/bin/activate
 ### Instala las Dependencias
 ```
 pip install -r requirements.txt
+pip install pymongo
 ```
 
 ### Ejecuta la Aplicación

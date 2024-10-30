@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request
+from pymongo import MongoClient
 
 app = Flask(__name__)
+
+# Agregando conexion base de datos
+cliente = MongoClient("mongodb+srv://susananzthwork:r8BAqoObzUwGF0rL@clasepython.6oxyx.mongodb.net/")
+app.db = cliente.ejemplo
+
+usuarios = [usuario for usuario in app.db.usuarios.find({})]
 
 class Pelicula:
     def __init__(self, nombre, año, protagonista):
@@ -120,6 +127,24 @@ def form():
         print(f"Hola, {info_formulario}")
         
     return render_template("form.html", nombre = info_formulario)
+
+@app.route('/form-2', methods = ["GET", "POST"])
+def form2():
+    if request.method == "POST":
+        info_formulario = request.form.get("nombre")
+        usuarios.append(info_formulario)
+    return render_template("form2.html", usuarios = usuarios)
+
+@app.route('/form-db', methods = ["GET", "POST"])
+def formDB():
+    if request.method == "POST":
+        info_formulario = request.form.get("nombre")
+        parametros = {
+            "nombre": info_formulario
+        }
+        usuarios.append(parametros)
+        app.db.usuarios.insert_one(parametros)
+    return render_template("formdb.html", usuarios = usuarios)
 
 if __name__ == '__main__':
     app.run(debug=True)
