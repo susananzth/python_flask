@@ -2,6 +2,12 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+class Pelicula:
+    def __init__(self, nombre, año, protagonista):
+        self.nombre = nombre
+        self.año = año
+        self.protagonista = protagonista
+
 @app.route('/')
 
 def hola():
@@ -14,6 +20,32 @@ def inicio():
 @app.route('/contacto')
 def contacto():
     return render_template("contacto.html")
+
+@app.route('/estructura')
+def estructura():
+    peliculas = [
+        "Orgullo y prejuicio",
+        "Harry Potter",
+        "Star Wars 1",
+        "Interestelar"
+    ]
+    
+    interestelar = {
+        "Nombre": "Interestelar",
+        "Año": 2014,
+        "Protagonista": "Matthew McConaughey"
+    }
+    
+    start = Pelicula(
+        "Start Wars 1",
+        1999,
+        "Ewan McGregor"
+        )
+    return render_template(
+        "estructura.html", 
+        peliculas = peliculas, 
+        destacada=interestelar,
+        favorita=start)
 
 @app.route('/variables')
 def variables():
