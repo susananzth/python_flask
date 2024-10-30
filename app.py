@@ -65,5 +65,9 @@ def expresiones():
     }
     return render_template("expresiones.html", **kwargs)
 
+@app.route('/condicionales')
+def condicionales():
+    return render_template("condicionales.html", equipo="Barcelona")
+
 if __name__ == '__main__':
     app.run(debug=True)
