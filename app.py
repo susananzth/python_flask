@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -15,6 +15,7 @@ def hola():
 
 @app.route('/inicio')
 def inicio():
+    # Se utiliza el import "render_template"
     return render_template("inicio.html")
 
 @app.route('/contacto')
@@ -105,6 +106,20 @@ def bucles():
         islas = dependencias, 
         superficies = superficies
     )
+
+@app.route('/form', methods = ["GET", "POST"])
+def form():
+    # Se utiliza el import "request"
+    
+    info_formulario = ""
+    # Si se recibe el metodo post...
+    if request.method == "POST":
+        info_formulario = request.form.get("nombre")
+        
+        # Aquí muestra este mensaje en la consola una vez que envía el texto desde el formulario
+        print(f"Hola, {info_formulario}")
+        
+    return render_template("form.html", nombre = info_formulario)
 
 if __name__ == '__main__':
     app.run(debug=True)
