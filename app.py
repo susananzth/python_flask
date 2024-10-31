@@ -149,6 +149,12 @@ def crear_app():
             usuarios.append(parametros)
             app.db.usuarios.insert_one(parametros)
         return render_template("formdb.html", usuarios = usuarios)
+
+    @app.route('/usuarios')
+    def show_usuarios():
+        users = ["Susana", "Yamil", "Ana"]
+        return render_template("usuarios.html", usuarios = users)
+
     return app
 
 if __name__ == '__main__':
