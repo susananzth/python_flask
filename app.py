@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request
 from pymongo import MongoClient
+from dotenv import load_dotenv
+load_dotenv()
 
 def crear_app():
     app = Flask(__name__)
